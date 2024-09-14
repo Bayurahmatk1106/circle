@@ -1,0 +1,112 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+
+using namespace std;
+int main() {
+    double radius;
+    const double PI = M_PI; // konstanta PI dari cmath
+    string nama; // deklarasi variabel string dari library string
+    int pilihan;
+    // menanyakan nama user agar terkesan tidak terlalu kaku
+    cout << "Namamu siapa??" << endl;
+    getline(cin, nama);
+    
+    // clearScreen();
+    
+    // menyapa dan menanyai tujuan user
+    cout << "Oke " << nama << ", kamu mau aku tolongin apa nih?" << endl;
+    cout << "Aku bisa nolongin kamu beberapa hal di bawah ini :" << endl;
+    cout << "1. Menghitung luas lingkaran" << endl;
+    cout << "2. Menghitung keliling lingkaran" << endl;
+    cout << "3. Membuatkan persamaan lingkaran" << endl;
+    cout << "4. Gak jadi hehe" << endl;
+    cout << endl;
+    cout << "Kamu mau aku nolongin apa nih " << nama << "? " << "Pilih antara nomor-nomor di atas ya" << endl; 
+    cin >> pilihan;
+    
+    
+   
+    switch (pilihan) {
+         // jika user memilih menghitung luas lingkaran
+        case 1 : {
+            cout << "Baiklah, mari kita hitung luas sebuah lingkaran" << endl;
+            cout << "Masukkan jari-jari lingkaran: ";
+            cin >> radius;
+            double luas;
+            // menghitung luas lingkaran
+            luas = PI * radius * radius;
+            cout << "Nah " << nama << ", luas lingkaran kamu adalah : " << luas << endl;
+            return 0;
+            } 
+         // jika user memilih menghitung keliling lingkaran
+        case 2 : {
+            cout << "Oke, mari kita hitung keliling sebuah lingkaran" << endl;
+            cout << "Masukkan jari-jari lingkaran: ";
+            cin >> radius;
+            double keliling;
+            // menghitung keliling lingkaran
+            keliling = 2 * PI * radius;
+            cout << "Nah " << nama << ", luas keliling kamu adalah : " << keliling << endl;
+            return 0;
+            } 
+         // jika user memilih membuat persamaan lingkaran
+        case 3 : {
+            cout << "Wah, kamu mau bikin persamaan lingkaran ya" << endl;
+            double titik_x; // variabel untuk titik pusat sumbu x
+            double titik_y; // variabel untuk titik pusat sumbu y
+            double jari; 
+            string lingx; // variabel untuk membentuk persamaan didasarkan pada titik pusat x
+            string lingy; // variabel untuk membentuk persamaan didasarkan pada titik pusat y
+            cout << "Kalau gitu, koordinat titik x untuk pusat nya mau di mana??"  << endl;
+            cin >> titik_x;
+            cout << "Kalau koordinat titik y untuk pusatnya di mana? " << endl;
+            cin >> titik_y;
+            cout << "Jari-jari lingkarannya mau sebesar apa?" << endl;
+            cin >> jari;
+            // identifikasi nilai titik pusat di x
+            if (titik_x < 0) {
+                lingx = "(X + ";
+                titik_x = titik_x * -1;
+            } else if (titik_x == 0) {
+                lingx = "(X";
+            } else {
+                lingx = "(X - ";
+            }
+            // identifikasi nilai titik pusat di y
+            if (titik_y < 0) {
+                lingy = "(Y + ";
+                titik_y = titik_y * -1;
+            } else if (titik_y == 0) {
+                lingy = "(Y";
+            } else {
+                lingy = "(Y - ";
+            }
+            // verifikasi Jari-jari
+            if (jari <= 0){
+                cout << "Jari-jari tidak valid" << endl;
+                return 0;
+            }
+            
+            // outputting program
+            cout << "Persamaan lingkaranmu adalah : ";
+            if (titik_x ==0 && titik_y == 0) {
+                cout << lingx << ")^2 + " << lingy  << ")^2 = " << jari*jari << endl;
+            } else if ( titik_x == 0 && titik_y != 0) {
+                cout << lingx <<  ")^2 + " << lingy << titik_y << ")^2 = " << jari*jari << endl;
+            } else if (titik_x != 0 && titik_y == 0 ) {
+                cout << lingx << titik_x <<  ")^2 + " << lingy << ")^2 = " << jari*jari << endl;
+    
+            } else {
+                cout << lingx << titik_x <<  ")^2 + " << lingy << titik_y << ")^2 = " << jari*jari << endl;
+            }
+            return 0;
+        }   
+        case 4 : {
+            cout << "Okey, mungkin lain kali kita bakal ketemu lagi, makasi udah mampir yaa " << nama << "!!" << endl; 
+            return 0;
+        }
+    return 0;
+    }
+    
+}
